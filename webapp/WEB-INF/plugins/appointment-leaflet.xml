@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?><plug-in>
+    <name>appointment-leaflet</name>
+    <class>fr.paris.lutece.portal.service.plugin.PluginDefaultImplementation</class>
+    <version>1.0.0-SNAPSHOT</version>
+    <documentation/>
+    <installation/>
+    <changes/>
+    <user-guide/>
+    <description>module.appointment.leaflet.description</description>
+    <provider>module.appointment.leaflet.provider</provider>
+    <provider-url>http://dev.lutece.paris.fr</provider-url>
+    <icon-url>images/admin/skin/plugins/appointment/appointment.png</icon-url>
+    <copyright>Copyright (c) 2013 Mairie de Paris</copyright>
+</plug-in>
