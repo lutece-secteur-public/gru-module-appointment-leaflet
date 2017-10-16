@@ -35,16 +35,12 @@
 package fr.paris.lutece.plugins.appointment.modules.leaflet.service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import fr.paris.lutece.plugins.appointment.business.AppointmentForm;
-import fr.paris.lutece.plugins.appointment.business.AppointmentFormHome;
-import fr.paris.lutece.plugins.appointment.business.calendar.AppointmentDay;
-import fr.paris.lutece.plugins.appointment.business.calendar.AppointmentSlot;
-import fr.paris.lutece.plugins.appointment.service.AppointmentService;
+import fr.paris.lutece.plugins.appointment.service.FormService;
 import fr.paris.lutece.plugins.leaflet.rest.service.IPopupContentProvider;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
 import fr.paris.lutece.util.html.HtmlTemplate;
@@ -62,7 +58,7 @@ public class AppointmentPopupContentProvider implements IPopupContentProvider
     public String getPopup( HttpServletRequest request, String strIdDocument, String strCode )
     {
         int nId = Integer.parseInt( strIdDocument );
-        AppointmentForm appointmentForm = AppointmentFormHome.findByPrimaryKey( nId );
+        AppointmentForm appointmentForm = FormService.buildAppointmentForm(nId, 0, 0);
         Map<String, Object> model = new HashMap<String, Object>();
         model.put( MARK_APPOINTMENT_FORM, appointmentForm );
         HtmlTemplate t = AppTemplateService.getTemplate( TEMPLATE_APPOINTMENT_POPUP, request.getLocale(), model );
