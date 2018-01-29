@@ -45,12 +45,11 @@ import fr.paris.lutece.plugins.leaflet.rest.service.IPopupContentProvider;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
 import fr.paris.lutece.util.html.HtmlTemplate;
 
-
 public class AppointmentPopupContentProvider implements IPopupContentProvider
 {
 
     // Templates
-    private static final String TEMPLATE_APPOINTMENT_POPUP="/skin/plugins/appointment/modules/leaflet/popup_appointment.html";
+    private static final String TEMPLATE_APPOINTMENT_POPUP = "/skin/plugins/appointment/modules/leaflet/popup_appointment.html";
 
     // Markers
     private static final String MARK_APPOINTMENT_FORM = "appointment_form";
@@ -58,10 +57,10 @@ public class AppointmentPopupContentProvider implements IPopupContentProvider
     public String getPopup( HttpServletRequest request, String strIdDocument, String strCode )
     {
         int nId = Integer.parseInt( strIdDocument );
-        AppointmentForm appointmentForm = FormService.buildAppointmentForm(nId, 0, 0);
-        Map<String, Object> model = new HashMap<String, Object>();
+        AppointmentForm appointmentForm = FormService.buildAppointmentForm( nId, 0, 0 );
+        Map<String, Object> model = new HashMap<String, Object>( );
         model.put( MARK_APPOINTMENT_FORM, appointmentForm );
-        HtmlTemplate t = AppTemplateService.getTemplate( TEMPLATE_APPOINTMENT_POPUP, request.getLocale(), model );
-        return t.getHtml();
+        HtmlTemplate t = AppTemplateService.getTemplate( TEMPLATE_APPOINTMENT_POPUP, request.getLocale( ), model );
+        return t.getHtml( );
     }
 }
