@@ -8,7 +8,7 @@
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>module-appointment-leaflet</artifactId>
     <packaging>lutece-plugin</packaging>
-    <version>2.0.2</version>
+    <version>2.0.3-SNAPSHOT</version>
     <name>Lutece appointment leaflet module</name>
     <repositories>
         <repository>
@@ -41,7 +41,7 @@
         <connection>scm:git:https://github.com/lutece-secteur-public/gru-module-appointment-leaflet.git</connection>
         <developerConnection>scm:git:https://github.com/lutece-secteur-public/gru-module-appointment-leaflet.git</developerConnection>
         <url>https://github.com/lutece-secteur-public/gru-module-appointment-leaflet.git</url>
-      <tag>module-appointment-leaflet-2.0.2</tag>
+      <tag>HEAD</tag>
   </scm>
     
 </project>
