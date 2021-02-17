@@ -56,8 +56,8 @@ public class AppointmentPopupContentProvider implements IPopupContentProvider
     public String getPopup( HttpServletRequest request, String strIdDocument, String strCode )
     {
         int nId = Integer.parseInt( strIdDocument );
-        AppointmentFormDTO appointmentForm = FormService.buildAppointmentForm( nId, 0, 0 );
-        Map<String, Object> model = new HashMap<String, Object>( );
+        AppointmentFormDTO appointmentForm = FormService.buildAppointmentFormWithoutReservationRule( nId );
+        Map<String, Object> model = new HashMap< >( );
         model.put( MARK_APPOINTMENT_FORM, appointmentForm );
         HtmlTemplate t = AppTemplateService.getTemplate( TEMPLATE_APPOINTMENT_POPUP, request.getLocale( ), model );
         return t.getHtml( );
