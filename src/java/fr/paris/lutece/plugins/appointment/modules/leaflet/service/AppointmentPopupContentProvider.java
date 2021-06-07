@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2002-2018, Mairie de Paris
+ * Copyright (c) 2002-2019, Mairie de Paris
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@ public class AppointmentPopupContentProvider implements IPopupContentProvider
     {
         int nId = Integer.parseInt( strIdDocument );
         AppointmentFormDTO appointmentForm = FormService.buildAppointmentFormWithoutReservationRule( nId );
-        Map<String, Object> model = new HashMap< >( );
+        Map<String, Object> model = new HashMap<>( );
         model.put( MARK_APPOINTMENT_FORM, appointmentForm );
         HtmlTemplate t = AppTemplateService.getTemplate( TEMPLATE_APPOINTMENT_POPUP, request.getLocale( ), model );
         return t.getHtml( );
