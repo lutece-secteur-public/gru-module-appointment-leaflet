@@ -7,7 +7,7 @@ import fr.paris.lutece.test.LuteceTestCase;
 public class AppointmentIconProviderTest extends LuteceTestCase
 {
     @Test
-    public void testAppointmentIconProvider(    )
+    public void testAppointmentIconProvider( )
     {
         assertTrue( true );
     }
