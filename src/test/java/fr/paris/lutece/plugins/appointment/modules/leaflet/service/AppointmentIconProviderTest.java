@@ -33,7 +33,7 @@
  */
 package fr.paris.lutece.plugins.appointment.modules.leaflet.service;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import fr.paris.lutece.test.LuteceTestCase;
 

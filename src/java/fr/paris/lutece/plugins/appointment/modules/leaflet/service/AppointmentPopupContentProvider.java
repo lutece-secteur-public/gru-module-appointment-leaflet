@@ -36,7 +36,9 @@ package fr.paris.lutece.plugins.appointment.modules.leaflet.service;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
+import jakarta.servlet.http.HttpServletRequest;
 
 import fr.paris.lutece.plugins.appointment.service.FormService;
 import fr.paris.lutece.plugins.appointment.web.dto.AppointmentFormDTO;
@@ -44,6 +46,8 @@ import fr.paris.lutece.plugins.leaflet.rest.service.IPopupContentProvider;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
 import fr.paris.lutece.util.html.HtmlTemplate;
 
+@ApplicationScoped
+@Named( "leaflet-rest-popup-provider-appointment" )
 public class AppointmentPopupContentProvider implements IPopupContentProvider
 {
 

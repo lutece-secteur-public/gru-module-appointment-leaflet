@@ -35,6 +35,11 @@ package fr.paris.lutece.plugins.appointment.modules.leaflet.service;
 
 import fr.paris.lutece.plugins.leaflet.service.IIconProvider;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
+
+@ApplicationScoped
+@Named( "leaflet-icon-provider-appointment" )
 public class AppointmentIconProvider implements IIconProvider
 {
     // No indirection: not dynamic
