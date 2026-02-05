@@ -1,0 +1,10 @@
+/target/
+/.classpath
+/.project
+/.settings
+/nbactions.xml
+/nb-configuration.xml
+/bin/
+/target_test-classes/
+/logs/
+.vscode/
