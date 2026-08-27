@@ -6,8 +6,8 @@
     <installation/>
     <changes/>
     <user-guide/>
-    <description>module.appointment.leaflet.description</description>
-    <provider>module.appointment.leaflet.provider</provider>
+    <description>module.appointment.leaflet.module.description</description>
+    <provider>module.appointment.leaflet.module.provider</provider>
     <provider-url>http://dev.lutece.paris.fr</provider-url>
     <icon-url>images/admin/skin/plugins/appointment/appointment.png</icon-url>
     <copyright>Copyright (c) 2013 Mairie de Paris</copyright>
