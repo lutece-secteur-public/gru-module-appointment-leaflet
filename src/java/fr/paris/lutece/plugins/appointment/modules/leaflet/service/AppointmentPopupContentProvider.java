@@ -33,6 +33,8 @@
  */
 package fr.paris.lutece.plugins.appointment.modules.leaflet.service;
 
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,11 +42,14 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
 import jakarta.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
+
 import fr.paris.lutece.plugins.appointment.service.FormService;
+import fr.paris.lutece.plugins.appointment.service.SlotService;
 import fr.paris.lutece.plugins.appointment.web.dto.AppointmentFormDTO;
 import fr.paris.lutece.plugins.leaflet.rest.service.IPopupContentProvider;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
-import fr.paris.lutece.util.html.HtmlTemplate;
 
 @ApplicationScoped
 @Named( "leaflet-rest-popup-provider-appointment" )
@@ -56,14 +61,36 @@ public class AppointmentPopupContentProvider implements IPopupContentProvider
 
     // Markers
     private static final String MARK_APPOINTMENT_FORM = "appointment_form";
+    private static final String MARK_FIRST_SLOT_DATE = "first_slot_date";
+    private static final String MARK_FIRST_SLOT_TIME = "first_slot_time";
+    private static final String FORMAT_TIME = "HH:mm";
 
+    /**
+     * Build the popup of an appointment form on the map: its title, its address and its first bookable slot.
+     *
+     * @param request
+     *            the request
+     * @param strIdDocument
+     *            the id of the appointment form
+     * @param strCode
+     *            the code of the layer
+     * @return the HTML of the popup, or an empty string for an unknown form
+     */
+    @Override
     public String getPopup( HttpServletRequest request, String strIdDocument, String strCode )
     {
-        int nId = Integer.parseInt( strIdDocument );
-        AppointmentFormDTO appointmentForm = FormService.buildAppointmentFormWithoutReservationRule( nId );
+        int nIdForm = NumberUtils.toInt( strIdDocument, -1 );
+        AppointmentFormDTO appointmentForm = ( nIdForm > 0 ) ? FormService.buildAppointmentFormWithoutReservationRule( nIdForm ) : null;
+        if ( appointmentForm == null )
+        {
+            return StringUtils.EMPTY;
+        }
         Map<String, Object> model = new HashMap<>( );
         model.put( MARK_APPOINTMENT_FORM, appointmentForm );
-        HtmlTemplate t = AppTemplateService.getTemplate( TEMPLATE_APPOINTMENT_POPUP, request.getLocale( ), model );
-        return t.getHtml( );
+        SlotService.findFirstAvailableSlot( nIdForm ).ifPresent( slot -> {
+            model.put( MARK_FIRST_SLOT_DATE, slot.getStartingDateTime( ).format( DateTimeFormatter.ofLocalizedDate( FormatStyle.SHORT ).withLocale( request.getLocale( ) ) ) );
+            model.put( MARK_FIRST_SLOT_TIME, slot.getStartingDateTime( ).format( DateTimeFormatter.ofPattern( FORMAT_TIME ) ) );
+        } );
+        return AppTemplateService.getTemplate( TEMPLATE_APPOINTMENT_POPUP, request.getLocale( ), model ).getHtml( );
     }
 }
