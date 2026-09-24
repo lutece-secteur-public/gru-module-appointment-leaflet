@@ -40,14 +40,11 @@
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
-            <version>4.0.5</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
     <properties>
         <componentName>leaflet-appointment</componentName>
-        <jiraProjectName>APPLEAFLET</jiraProjectName>
-        <jiraComponentId>13454</jiraComponentId>
     </properties>
     <scm>
         <connection>scm:git:https://github.com/lutece-secteur-public/gru-module-appointment-leaflet.git</connection>
