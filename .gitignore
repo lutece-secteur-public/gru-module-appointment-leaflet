@@ -8,3 +8,4 @@
 /target_test-classes/
 /logs/
 .vscode/
+java.io.tmpdir/
