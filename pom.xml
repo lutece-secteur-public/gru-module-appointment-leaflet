@@ -36,6 +36,13 @@
             <artifactId>library-lutece-unit-testing</artifactId>
             <type>jar</type>
             <scope>test</scope>
+            <exclusions>
+                <!-- lutece-core brings library-core-utils 1.0.1: the 1.0.0 of the test library fails RequireUpperBoundDeps -->
+                <exclusion>
+                    <groupId>fr.paris.lutece.plugins</groupId>
+                    <artifactId>library-core-utils</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
