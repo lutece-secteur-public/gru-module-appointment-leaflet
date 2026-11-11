@@ -3,7 +3,7 @@
 	<#if (appointment_form.address)?has_content><@cText>${appointment_form.address}</@cText></#if>
 	<#if first_slot_date??>
 		<@cText>#i18n{module.appointment.leaflet.firstSlotAvailable} : ${first_slot_date} ${first_slot_time}</@cText>
-		<@cLink href='jsp/site/Portal.jsp?page=appointment&amp;view=getViewAppointmentCalendar&amp;id_form=${appointment_form.idForm}' label='#i18n{module.appointment.leaflet.book}' />
+		<@cLink href='jsp/site/Portal.jsp?page=appointment&view=getViewAppointmentCalendar&id_form=${appointment_form.idForm?c}' label='#i18n{module.appointment.leaflet.book}' />
 	<#else>
 		<@cText>#i18n{module.appointment.leaflet.noSlotAvailable}</@cText>
 	</#if>
